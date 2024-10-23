@@ -144,6 +144,13 @@ header {
         height: auto; /* Allow height to auto adjust */
        
     }
+   .nav {
+
+    margin: 20px 50px 0px 80px;
+
+    }
+    
+
 }
 
 /* For Medium Screens */
@@ -234,6 +241,22 @@ header {
         margin-bottom: 50px; /* Bottom margin */
     }
 }
+@media (max-width: 480px){
+    .search {
+        width: 95%;
+    }
+    .search .search-item p{
+        margin-left: 5px;
+    }
+    .search .search-item p i{
+        margin-right: 10px;
+    }
+    .search .search-item input{
+        padding-right: 30px;
+    }
+}
+
+
 
 /************************************************--lowerpart--***********************************/
 .section-1 {
@@ -376,13 +399,14 @@ header {
 .section-2a {
     display: flex;
     justify-content: space-evenly;
+    
     margin-top: 30px;
     margin-bottom: 130px;
     cursor: pointer;
 }
 
 .img-details {
-    width: 300px;
+    width: 280px;
     height: 350px;
     overflow: hidden;
     position: relative;
@@ -475,11 +499,18 @@ header {
 }
 
 @media (max-width: 992px) {
+    .center-section {
+        margin: 30px 20px; /* Reduced margins */
+    }
     .section-2b {
         max-width: 100%; /* Full width */
         grid-template-columns: repeat(2, 1fr); /* Two columns */
         grid-column-gap: 6px; /* Reduced gap */
         grid-row-gap: 15px; /* Reduced gap */
+    }
+    .img-details {
+        width: 230px; /* Responsive width */
+        height: 250px; /* Maintain aspect ratio */
     }
     
 }
@@ -504,7 +535,7 @@ header {
     }
 
     .img-details {
-        width: 160px; /* Responsive width */
+        width: 140px; /* Responsive width */
         height: 250px; /* Maintain aspect ratio */
     }
 
@@ -551,6 +582,10 @@ header {
 
     .locations div span {
         font-size: 0.9rem; /* Smaller font size for locations */
+    }
+    .img-details {
+        width: 110px; /* Responsive width */
+        height: 250px; /* Maintain aspect ratio */
     }
 
     .img-details div span:first-child {
