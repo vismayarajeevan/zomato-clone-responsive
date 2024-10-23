@@ -505,7 +505,7 @@ header {
     .section-2b {
         max-width: 100%; /* Full width */
         grid-template-columns: repeat(2, 1fr); /* Two columns */
-        grid-column-gap: 6px; /* Reduced gap */
+        grid-column-gap: 90px; /* Reduced gap */
         grid-row-gap: 15px; /* Reduced gap */
     }
     .img-details {
@@ -705,6 +705,14 @@ header {
     width: 137px;
     height: 40px;
     cursor: pointer;
+}
+
+@media (max-width: 992px){
+   
+    .email button {
+        width: 100%; /* Full width */
+        height: 45px;
+    }
 }
 
 /* Media Queries for smaller screens */
