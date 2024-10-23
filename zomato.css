@@ -1,78 +1,101 @@
 /***--mainbody--***/
-body{
-    margin: 0px;
-    padding: 0px;
+body {
+    margin: 0;
+    padding: 0;
     text-decoration: none;
-    font-family: "poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
     text-transform: capitalize;
 }
-/***--header--***/
-header{
+
+/***--Header--***/
+header {
     width: 100%;
-    height: 60vh;
+    height: auto; /* Change from fixed height to auto */
     overflow: hidden;
     position: relative;
-    object-fit: cover;
-    
 }
-.header-image{
+
+.header-image {
     width: 100%;
     background-size: cover;
-
     position: absolute;
-    top: -20vh;
+    top: 0; /* Adjust to show the full image */
     z-index: -1;
-} 
-.header-image img{
-    width: 100%;
-
 }
-.nav{
+
+.header-image img {
+    width: 100%;
+}
+
+.nav {
     display: flex;
     justify-content: space-between;
     color: #ffffff;
     font-size: 1.1rem;
-    margin: 0 120px 0px 250px;
+    margin: 20px 150px 0px 250px; /* Adjust margins for larger screens */
 }
-.nav-bar{
+
+.nav-bar {
     list-style: none;
-    font-weight: lighter;
-    display: flex;
-    gap: 1.5rem;
+    font-weight: 300;
+    display: flex; /* Start as flex for larger screens */
+    justify-content: space-evenly;
+    gap: 1rem; /* Use rem for consistent spacing */
+    font-size: 1.2rem;
+    transition: height 0.3s ease; /* Smooth transition for height */
 }
-.nav-bar li{
+
+/* Checkbox */
+#checkbox {
+    display: none;
+}
+
+.icons1 {
+    position: absolute;
+    right: 5%;
+    font-size: 2.5rem;
     cursor: pointer;
+    color: white;
+    display: none; /* Initially hidden */
 }
-.head{
+
+.head {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 7vh;
 }
-.logo{
+
+.logo {
     width: 20vw;
 }
-.head h3{
+
+.head h3 {
     font-size: 2.1rem;
     text-transform: none;
     color: whitesmoke;
     font-weight: 400;
 }
-.search{
+
+.search {
     display: flex;
     width: 47vw;
     align-items: center;
     border-radius: 10px;
-    background-color: #ffffff;padding: 5px 4px;
+    background-color: #ffffff;
+    padding: 5px 4px;
+    margin-bottom: 50px;
 }
-.search-item{
+
+.search-item {
     display: flex;
     align-items: center;
     margin-left: 10px;
 }
-.search .search-item p{
+
+.search .search-item p {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -81,7 +104,8 @@ header{
     font-size: 15px;
     margin: 10px;
 }
-.search .search-item p i{
+
+.search .search-item p i {
     margin-left: 2px;
     color: #000000;
     padding-right: 20px;
@@ -89,69 +113,168 @@ header{
     font-weight: 900;
     font-size: 15px;
 }
-.search .search-item input{
+
+.search .search-item input {
     outline: none;
     border: none;
     width: 200%;
     padding-left: 10px;
     font-size: 15px;
 }
-.search .search-item i{
+
+.search .search-item i {
     font-size: 18px;
-    
 }
-.search .search-item:first-child{
+
+.search .search-item:first-child {
     color: palevioletred;
     width: 40%;
 }
-.search .search-item:last-child{
+
+.search .search-item:last-child {
     color: gray;
     width: 100%;
 }
 
-/***--lowerpart--***/
-.section-1{
+@media (max-width: 992px) {
+    .header-image img {
+        height: auto; /* Allow height to auto adjust */
+    }
+}
+
+/* For Medium Screens */
+@media (max-width: 768px) {
+    #get {
+        display: none; /* Hide 'Get the App' text */
+    }
+
+    .header-image img {
+        height: 800px; /* Set height for header image */
+    }
+
+    .icons1 {
+        display: block; /* Show the icons container */
+    }
+
+    #checkbox:checked ~ .icons1 #menuIcon {
+        display: none; /* Hide menu icon when the checkbox is checked */
+    }
+
+    #checkbox:checked ~ .icons1 #crossIcon {
+        display: block; /* Show cross icon when the checkbox is checked */
+    }
+
+    .icons1 #crossIcon {
+        display: none; /* Keep cross icon hidden by default */
+    }
+    
+
+    .nav-bar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        
+       padding-left: 0px;
+        
+        /* top: 100%; Position it below the icons */
+        right: 50px;
+        width: 100%;
+        height: 0; /* Initially hidden */
+        background:rgba(0, 0, 0, 0.1); /* Background color */
+        overflow: hidden; /* Hide overflow when not expanded */
+        transition: height 0.3s ease; /* Smooth transition for height */
+    }
+
+    #checkbox:checked ~ .nav-bar {
+        height: 300px; /* Allow height to auto adjust when expanded */
+        max-height: 500px; /* Optional: Set a maximum height for the dropdown */
+        width: 100%;
+    }
+
+    .nav-bar li {
+        display: block; /* Ensure items are displayed block */
+        font-size: 0.9rem; /* Font size for items */
+        text-align: center; /* Center the text */
+        opacity: 1; /* Ensure items are fully visible */
+        color:white; /* Set text color to white */
+        font-weight: 500;
+        width: 100%;
+      
+       
+    }
+
+    /* Animation effect for nav items */
+    #checkbox:checked ~ .nav-bar li {
+        display: block; /* Ensure items are displayed */
+        transform: translateY(0); /* Reset transform */
+        opacity: 1; /* Ensure items are fully visible */
+        transition: opacity 0.3s ease; /* Smooth transition for opacity */
+    }
+
+    .head h3 {
+        font-size: 1.5rem; /* Font size for header text */
+        text-align: center; /* Center the header text */
+        padding-top: 20px; /* Add padding */
+    }
+
+    .logo {
+        width: 100px; /* Adjust logo width */
+    }
+
+    .search {
+        width: 90%; /* Wider search box */
+        margin-bottom: 50px; /* Bottom margin */
+    }
+}
+
+/************************************************--lowerpart--***********************************/
+.section-1 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 4rem;
     margin-top: 50px;
     cursor: pointer;
-
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
 }
-.section-1 .section-1-item{
+
+.section-1 .section-1-item {
     position: relative;
     /***--image size--***/
-    width: 27rem;
+    width: 27rem; /* Default width for larger screens */
     margin: 3px 5px;
     overflow: hidden;
     border-radius: 10px;
     background: #ffffff;
-    border: 1px solid rgb(236,236,236);
+    border: 1px solid rgb(236, 236, 236);
 }
-.section-1 .section-1-item img{
+
+.section-1 .section-1-item img {
     margin-top: -8vh;
     width: 100%;
-    border: 1px solid rgb(236,236,236);
+    border: 1px solid white;
     border-radius: 10px;
     z-index: -1;
 }
-.section-1 .section-1-item .item-details{
+
+.section-1 .section-1-item .item-details {
     position: absolute;
     bottom: 0px;
     align-items: center;
-    border: 0 0 10px 10px;
-    background-color: #ffffff;
+    border-radius: 0 0 10px 10px; /* Ensure corners are rounded */
+    background-color: white; /* Slightly transparent background */
     width: 100%;
     height: 35%;
     z-index: 2;
 }
-.section-1 .section-1-item .item-details h3{
+
+.section-1 .section-1-item .item-details h3 {
     margin-top: 10px;
     margin-left: 15px;
     font-weight: 400;
 }
-.section-1 .section-1-item .item-details p{
+
+.section-1 .section-1-item .item-details p {
     margin-top: -10px;
     margin-left: 15px;
     font-size: 16px;
@@ -159,48 +282,106 @@ header{
     color: #686868;
     text-transform: none;
 }
-/***--section-2--***/
-.center-section{
+
+/* Media Queries for Responsiveness */
+
+/* For medium screens */
+@media (max-width: 768px) {
+    .section-1 .section-1-item {
+        width: 100%; /* Full width for medium screens */
+        max-width: 400px; /* Limit max width */
+        margin: 10px 0; /* Margin adjustment */
+    }
+
+    .section-1 .section-1-item img {
+        margin-top: -5vh; /* Adjust image position */
+    }
+
+    .section-1 .section-1-item .item-details h3 {
+        font-size: 1.5rem; /* Adjust heading size */
+    }
+
+    .section-1 .section-1-item .item-details p {
+        font-size: 14px; /* Adjust paragraph size */
+    }
+}
+
+/* For smaller screens */
+@media (max-width: 480px) {
+    .section-1 .section-1-item {
+        width: 90%; /* Take up most of the width */
+        margin: 10px auto; /* Center items with auto margins */
+    }
+
+    .section-1 .section-1-item img {
+        margin-top: -3vh; /* Adjust image position */
+    }
+
+    .section-1 .section-1-item .item-details h3 {
+        font-size: 1.2rem; /* Smaller heading for small screens */
+    }
+
+    .section-1 .section-1-item .item-details p {
+        font-size: 12px; /* Smaller paragraph for small screens */
+    }
+}
+
+
+
+
+/*****************************************************--section-2--************************************/
+
+
+
+
+.center-section {
     margin: 60px 220px;
 }
-.section-2 h2{
+
+.section-2 h2 {
     font-size: 2.7rem;
     font-weight: lighter;
     margin-bottom: 5px;
 }
-.section-2 div{
-    display: flex;     /***--align itema in side--***/
+
+.section-2 div {
+    display: flex; /* Align items in a row */
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
 }
-.section-2 h6{
+
+.section-2 h6 {
     margin: 0;
     font-size: 1.15rem;
     text-transform: none;
     font-weight: lighter;
-    color: rgb(99,98,98);
+    color: rgb(99, 98, 98);
 }
-.section-2 span, .fa-caret-right{
+
+.section-2 span, .fa-caret-right {
     color: palevioletred;
     cursor: pointer;
 }
-    /***---section2a--***/
- .section-2a{
+
+/* section-2a styles */
+.section-2a {
     display: flex;
     justify-content: space-evenly;
     margin-top: 30px;
     margin-bottom: 130px;
     cursor: pointer;
- }
-.img-details{
+}
+
+.img-details {
     width: 300px;
     height: 350px;
     overflow: hidden;
     position: relative;
     border-radius: 8px;
 }
-.img-details div{
+
+.img-details div {
     position: absolute;
     background: linear-gradient(transparent, black);
     width: 100%;
@@ -209,276 +390,539 @@ header{
     align-items: flex-end;
     bottom: 0;
 }
-.img-details div span:first-child{
+
+.img-details div span:first-child {
     display: inline-block;
     color: #ffffff;
     padding-left: 15px;
     font-size: 1rem;
     padding-bottom: 10px;
 }
-.img-details i{
+
+.img-details i {
     color: #ffffff;
     padding-bottom: 9px;
 }
-.img-details img{
+
+.img-details img {
     width: 300px;
     height: 350px;
     object-fit: cover;
 }
-/***---section-2b---***/
-.center-section h1{
+
+/* section-2b styles */
+.center-section h1 {
     font-weight: lighter;
     font-size: 2.1rem;
     color: #383838;
 }
-.section-2b{
-    display: grid;   /***---it is for give arrow in side direction---***/
+
+.section-2b {
+    display: grid; /* For grid layout */
     justify-content: center;
-    grid-column-gap:20px;
-    grid-row-gap:30px;
-    grid-template-columns: 350px 350px 350px;
-    grid-template-rows: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 30px;
+    grid-template-columns: repeat(3, 350px); /* Three columns of 350px */
 }
-.locations{
-    border: 1px solid rgb(235,235,235);
-    box-shadow: 0 1 px 3px rgb(226,233,233);
+
+/* locations styles */
+.locations {
+    border: 1px solid rgb(235, 235, 235);
+    box-shadow: 0 1px 3px rgb(226, 233, 233);
     width: 350px;
     height: 80px;
     overflow: hidden;
     border-radius: 10px;
     cursor: pointer;
 }
-.locations div{
+
+.locations div {
     overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 20px;
 }
-.locations div span{
-    color: rgb(65,64,64);
+
+.locations div span {
+    color: rgb(65, 64, 64);
     font-size: 1.2rem;
     display: inline-block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-top:-4px;
-
+    margin-top: -4px;
 }
-.locations div p{
+
+.locations div p {
     font-size: 16px;
     font-weight: lighter;
     margin-top: 0px;
 }
-/***--section-3---***/
-.section-3{
+
+/* Media Queries for responsive design */
+@media(max-width: 768px) {
+    .center-section {
+        margin: 30px 20px; /* Reduced margins */
+    }
+
+    .section-2 h2 {
+        font-size: 2rem; /* Smaller heading */
+    }
+
+    .section-2 h6 {
+        font-size: 1rem; /* Smaller subheading */
+    }
+
+    .section-2a {
+        flex-direction: row; /* Stack items vertically */
+        align-items: center; /* Center-align items */
+    }
+
+    .img-details {
+        width: 160px; /* Responsive width */
+        height: 250px; /* Maintain aspect ratio */
+    }
+
+    .img-details img {
+        width: 100%; /* Make images responsive */
+        height: 250px; /* Maintain aspect ratio */
+    }
+
+    .section-2b {
+        max-width: 100%; /* Full width */
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+        grid-column-gap: 10px; /* Reduced gap */
+        grid-row-gap: 15px; /* Reduced gap */
+    }
+
+    .locations {
+        width: 100%; /* Full width for locations */
+        height: auto; /* Automatic height */
+    }
+
+    .locations div span {
+        font-size: 1rem; /* Smaller font size */
+    }
+
+    #popular {
+        text-align: center; /* Center the title */
+        font-size: 1.5rem; /* Adjust font size */
+        margin-bottom: 30px; /* Adjust bottom margin */
+    }
+}
+
+@media(max-width: 480px) {
+    .center-section {
+        margin: 20px 10px; /* Further reduce margins */
+    }
+
+    .section-2 h2 {
+        font-size: 1.5rem; /* Smaller heading for mobile */
+    }
+
+    .section-2 h6 {
+        font-size: 0.9rem; /* Smaller subheading for mobile */
+    }
+
+    .locations div span {
+        font-size: 0.9rem; /* Smaller font size for locations */
+    }
+
+    .img-details div span:first-child {
+        font-size: 0.9rem; /* Smaller text on images */
+    }
+
+    #popular {
+        font-size: 1.2rem; /* Adjust font size for mobile */
+    }
+}
+
+
+
+/****************************************************--section-3---*******************************/
+
+
+.section-3 {
     display: flex;
     margin: 110px 0;
     padding: 40px 0;
-    background-color: rgb(255,248,248);
+    background-color: rgb(255, 248, 248);
     justify-content: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
 }
-.flex{
+
+.flex {
     display: flex;
 }
-.contact{
+
+.contact {
     width: 60%;
     overflow: hidden;
+    flex-direction: row; /* Default direction for larger screens */
 }
-.contact img{
-    width: 400px;
+
+.contact img {
+    width: 400px; /* Default image width */
     padding-right: 15px;
 }
-.address{
-    width: 470px;
+
+.address {
+    width: 470px; /* Default address width */
     margin-top: 20px;
 }
-.address p{
+
+.address p {
     padding-bottom: 10px;
     font-size: 0.95rem;
-    color: rgb(92,91,91);
+    color: rgb(92, 91, 91);
 }
-.address h2{
+
+.address h2 {
     font-size: 2.7rem;
     font-weight: lighter;
     margin-bottom: 20px;
-    color: rgb(34,34,34);
+    color: rgb(34, 34, 34);
 }
-.radio{
+
+.radio {
     display: flex;
     justify-content: space-between;
     margin-right: 230px;
     padding-bottom: 20px;
 }
-.radio label{
+
+.radio label {
     font-size: 1.1rem;
-    color: rgb(49,49,49);
+    color: rgb(49, 49, 49);
 }
-.radio [type="radio"]{
-    accent-color: rgb(255,92,92);
+
+.radio [type="radio"] {
+    accent-color: rgb(255, 92, 92);
 }
-.email{
+
+.email {
     position: relative;
 }
-.email input{
+
+.email input {
     height: 46px;
     border-radius: 5px;
-    width: 270px;
-    border: 1px solid rgb(184,183,183);
-    outline: rgb(255,104,104);
+    width: 270px; /* Default input width */
+    border: 1px solid rgb(184, 183, 183);
+    outline: rgb(255, 104, 104);
     font-size: 1rem;
     padding-left: 15px;
 }
-.place{
+
+.place {
     position: absolute;
     font-size: 1rem;
     left: 15px;
     top: 15px;
     color: gray;
     font-weight: 100;
-
 }
-.email button{
+
+.email button {
     width: 150px;
     border-radius: 6px;
-    border: 1px solid rgb(255,104,104);
-    background-color: rgb(255,104,104);
+    border: 1px solid rgb(255, 104, 104);
+    background-color: rgb(255, 104, 104);
     font-size: 1rem;
     margin-left: 6px;
     color: #ffffff;
     cursor: pointer;
 }
-.download{
+
+.download {
     font-size: 0.7rem;
     margin-top: 27px;
     margin-bottom: 0;
     color: gray;
 }
-.app img{
+
+.app img {
     width: 137px;
     height: 40px;
     cursor: pointer;
 }
-/*section-4 start*/
-.section-4{
+
+/* Media Queries for smaller screens */
+@media (max-width: 768px) {
+    .contact {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center items */
+        width: 90%; /* Use more width */
+    }
+
+    .contact img {
+        width: 100%; /* Make the image responsive */
+        max-width: 300px; /* Limit max size */
+        padding-right: 0; /* Remove padding for smaller screens */
+    }
+
+    .address {
+        width: 100%; /* Full width on smaller screens */
+        text-align: center; /* Center text */
+    }
+
+    .address h2 {
+        font-size: 2rem; /* Reduce font size */
+    }
+
+    .radio {
+        margin-right: 0px; /* Remove right margin */
+        gap: 10px;
+        justify-content: center; /* Center the radio buttons */
+    }
+
+    .radio label {
+        font-size: 1rem; /* Reduce font size */
+    }
+
+    .email input {
+        width: 100%; /* Full width */
+        margin-bottom: 10px; /* Add margin for spacing */
+    }
+
+    .email button {
+        width: 100%; /* Full width */
+        height: 45px;
+    }
+
+    .download {
+        font-size: 0.6rem; /* Reduce font size */
+    }
+
+    .app img {
+        width: 80%; /* Make app images responsive */
+        max-width: 120px; /* Limit max size */
+        margin-left: 150px;
+        margin-right: -140px;
+    
+        
+    }
+    
+}
+
+@media (max-width: 480px) {
+    .address h2 {
+        font-size: 1.5rem; /* Further reduce font size */
+    }
+
+    .address p {
+        font-size: 0.85rem; /* Further reduce font size */
+    }
+
+    .email input {
+        height: 40px; /* Adjust input height */
+    }
+
+    .email button {
+        height: 40px; /* Adjust button height */
+    }
+}
+
+/***************************************************section-4 start***************************************/
+
+
+.section-4 {
     margin-bottom: 114px;
 }
-.section-4 h1{
-    font-size: 1.9rem;
+
+.section-4 h1 {
+    font-size: 1.9rem; /* Base font size */
     font-weight: lighter;
-    color: rgb(31,31,31);
+    color: rgb(31, 31, 31);
 }
-details{
+
+/* Details styling */
+details {
     font-weight: 400;
-    border: 1px solid rgb(232,232,232);
-    color: rgb(28,28,28);
+    border: 1px solid rgb(232, 232, 232);
+    color: rgb(28, 28, 28);
     padding: 1.2rem;
-    font-size: 20px;
+    font-size: 20px; /* Base font size for details */
     margin-bottom: 1.2rem;
     border-radius: 0.5rem;
     cursor: pointer;
     text-transform: none;
 }
-.description{
-    
+
+/* Description styling */
+.description {
     font-weight: 400;
-    font-size: 17px;
+    font-size: 17px; /* Base font size for descriptions */
     color: gray;
 }
-.description .horizontal-list-flex{
-    display: flex;
-    flex-wrap: wrap;
-}
-li{
-    margin-right: 45px;
 
+.description .horizontal-list-flex {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto new lines */
 }
-li:last-child{
-    margin-right: 0px;
+
+/* List items */
+li {
+    margin-right: 45px; /* Space between items */
 }
-/*-footer*/
-.footer{
+
+li:last-child {
+    margin-right: 0px; /* Remove margin from last item */
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    .section-4 h1 {
+        font-size: 1.5rem; /* Reduce font size for smaller screens */
+        font-weight: 500;
+   
+    }
+
+    details {
+        font-size: 15px; /* Slightly smaller font size */
+        padding: 1rem; /* Reduce padding */
+        
+    }
+
+    .description {
+        font-size: 15px; /* Reduce font size for description */
+    }
+
+    .description .horizontal-list-flex {
+        justify-content: center; /* Center the items */
+    }
+
+    li {
+        margin-right: 20px; /* Reduce space between items */
+    }
+}
+
+@media (max-width: 480px) {
+    .section-4 h1 {
+        font-size: 1.2rem; /* Further reduce font size */
+    }
+
+    details {
+        font-size: 16px; /* Further reduce font size */
+        padding: 0.8rem; /* Further reduce padding */
+    }
+
+    .description {
+        font-size: 14px; /* Further reduce description font size */
+    }
+
+    li {
+        margin-right: 10px; /* Reduce space between items */
+        flex: 1 1 40%; /* Allow items to take up more space */
+    }
+}
+
+/*****************************************************-footer***************************************************/
+
+
+
+
+
+
+.footer {
     width: 100%;
-    background: rgb(248,248,248);
+    background: rgb(248, 248, 248);
 }
-.section-5{
-    padding: 40px 120px;
+
+.section-5 {
+    padding: 40px 120px; /* Default padding */
     justify-content: space-between;
 }
-.first{
+
+.first {
     padding: 0px 30px;
     display: flex;
     justify-content: space-between;
 }
-.first img{
+
+.first img {
     margin-top: -55px;
-    width: 128px;
+    width: 128px; /* Adjust size if needed */
     height: 150px;
 }
-.first-1a{
+
+.first-1a {
     display: flex;
 }
-.first-1a span{
+
+.first-1a span {
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
     margin-right: 20px;
     font-weight: 400;
 }
-.first-1a img{
+
+.first-1a img {
     padding-top: 10px;
     margin-right: 5px;
-    width: 25px;
+    width: 25px; /* Adjust size if needed */
     height: 15px;
 }
-.first-1a svg{
+
+.first-1a svg {
     padding-top: 10px;
     margin-right: 0px;
     width: 25px;
     height: 15px;
 }
-.first-1a i{
+
+.first-1a i {
     margin-left: 5px;
 }
-.second{
-    
-    /* padding: 10px 0px; */
+
+.second {
+    padding: 10px 0px;
     display: flex;
-    justify-content: space-around;
-    
+    flex-direction: row; /* Ensure row direction */
+    flex-wrap: wrap; /* Allow items to wrap */
+    justify-content: space-between; /* Space items evenly */
 }
-.second div{
-    width: 200px;
+
+.second div {
+    flex: 1 1 10%; /* Allow divs to grow and shrink, with a base width of 20% */
+    margin-right: 10px; /* Space between items */
+    margin-bottom: 15px; /* Bottom margin for spacing */
 }
-.second h4{
-    font-weight: 400;
-    color: rgb(22,22,22);
-    white-space: nowrap;
+
+.second h4 {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(22, 22, 22);
 }
-.second a{
-    display: inline-block;
-    width: 200px;
+
+.second a {
+    display: flex;
     margin-bottom: 7px;
-    white-space: nowrap;
     color: gray;
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Default font size */
     text-decoration: none;
 }
+
 .second img {
     width: 137px;
     height: 40px;
     margin-top: 11px;
     cursor: pointer;
 }
-.social{
+
+.social {
     display: flex;
     flex-direction: column;
 }
-.social div{
-    margin-top: -15px;
+
+.social div {
+    margin-top: 15px;
     margin-bottom: 15px;
 }
-.social i{
+
+.social i {
     padding: 6px;
     background-color: black;
     color: white;
@@ -489,14 +933,86 @@ li:last-child{
     justify-content: center;
     align-items: center;
 }
-.section-5 hr{
+
+.section-5 hr {
     width: 92.5%;
     margin-right: 60px;
-    
 }
-.third{
+
+.third {
     padding: 0px 50px;
     color: gray;
     font-size: 0.85rem;
     margin-top: 25px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .section-5 {
+        padding: 20px 10px; /* Reduced padding for smaller screens */
+    }
+
+    .first img {
+        margin-top: 0px;
+        width: 100px; /* Smaller logo */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    #india{
+        width: 30px;
+    }
+
+    #globe{
+        width: 30px;
+       
+    }
+    .first-1a span {
+        margin-right: 10px; /* Reduced margin */
+    }
+
+    .second {
+        justify-content: space-evenly; /* Adjust alignment for smaller screens */
+        
+    }
+
+    .second div {
+        flex: 1 1 10%; /* Use a base width of 30% for better fit */
+    }
+
+    .second h4 {
+        font-size: 0.8rem; /* Adjusted font size */
+        font-weight: 500;
+    }
+
+    .second a {
+        font-size: 12px; /* Smaller text for links */
+    }
+}
+
+@media (max-width: 480px) {
+    .first img {
+        width: 80px; /* Smaller logo for very small screens */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .section-5 {
+        padding: 15px 5px; /* Further reduced padding */
+    }
+
+    .second div {
+        flex: 1 1 45%; /* Base width of 45% on very small screens */
+        margin-right: 5px; /* Adjust margin for small screens */
+    }
+
+    .second h4 {
+        font-size: 0.5rem; /* Adjusted font size */
+    }
+
+    .second a {
+        font-size: 10px; /* Smaller text for links */
+    }
+
+    .third {
+        font-size: 0.65rem; /* Smaller text */
+    }
 }
